@@ -1,0 +1,6 @@
+{
+  "name": "Quizify - Online Interactive Quiz Platform",
+  "description": "Test Your Knowledge. Track Your Progress. An interactive online quiz platform featuring multiple categories, timed quizzes, detailed score reports, and answer explanations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

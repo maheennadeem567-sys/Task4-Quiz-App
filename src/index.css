@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --color-bg-main: #f8fafc;
+  --color-bg-secondary: #f1f5f9;
+  --color-bg-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+}
+
+.dark {
+  --color-bg-main: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #1e293b;
+  --color-border: #334155;
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+}
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+}
+
+/* Custom smooth transitions and animations */
+@keyframes pulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.92;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulseSubtle 2.5s infinite ease-in-out;
+}
+
+/* Hero Badge Entrance Animation (12px slide up, 0.6s, begins immediately on load) */
+@keyframes badgeFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-badge-entrance {
+  animation: badgeFadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Sparkle Icon: slow rotation (8s) + gentle scale pulse (1 to 1.15) */
+@keyframes sparkleSpinPulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.15);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.animate-sparkle-spin-pulse {
+  animation: sparkleSpinPulse 8s linear infinite;
+  transform-origin: center;
+  will-change: transform;
+}
+
+/* Badge Shimmer Sweep: soft diagonal streak passing every 5s */
+@keyframes badgeShimmer {
+  0% {
+    transform: translateX(-160%) skewX(-20deg);
+    opacity: 0;
+  }
+  4% {
+    opacity: 0.8;
+  }
+  24% {
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0.8;
+  }
+  25%, 100% {
+    transform: translateX(360%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+.animate-badge-shimmer {
+  animation: badgeShimmer 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+/* Badge Purple Border Glow Breathing (opacity pulse, ~3s loop) */
+@keyframes badgeGlowBreathe {
+  0%, 100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+.animate-badge-glow {
+  animation: badgeGlowBreathe 3s ease-in-out infinite;
+  will-change: opacity;
+}
+
+/* Staggered Hero Fade and Slide Up (starts after the badge appears) */
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up-1 {
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+}
+
+.animate-fade-in-up-2 {
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.animate-fade-in-up-3 {
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both;
+}
+
+.animate-fade-in-up-4 {
+  animation: fadeSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.64s both;
+}
+
+/* Shimmering Gradient Movement (Loop) */
+@keyframes shimmerGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-shimmer-gradient {
+  background-size: 200% 200%;
+  animation: shimmerGradient 6s ease-in-out infinite;
+}
+
+/* Gentle Floating Up-and-Down Animation */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+
+/* Slow Floating Glowing Blurred Circles */
+@keyframes floatOrb1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(35px, -25px) scale(1.08);
+  }
+  66% {
+    transform: translate(-20px, 15px) scale(0.96);
+  }
+}
+
+@keyframes floatOrb2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(-30px, 30px) scale(0.94);
+  }
+  66% {
+    transform: translate(25px, -20px) scale(1.06);
+  }
+}
+
+@keyframes floatOrb3 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(20px, 25px) scale(1.05);
+  }
+}
+
+.animate-float-orb-1 {
+  animation: floatOrb1 13s ease-in-out infinite;
+}
+
+.animate-float-orb-2 {
+  animation: floatOrb2 16s ease-in-out infinite;
+}
+
+.animate-float-orb-3 {
+  animation: floatOrb3 19s ease-in-out infinite;
+}
+
+/* Glowing Badge Ring Pulse */
+@keyframes pulseRing {
+  0%, 100% {
+    transform: scale(0.96);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.22);
+    opacity: 0.75;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulseRing 2.6s ease-in-out infinite;
+}
+
+/* Prefers-reduced-motion accessibility support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-badge-entrance,
+  .animate-sparkle-spin-pulse,
+  .animate-badge-shimmer,
+  .animate-badge-glow,
+  .animate-fade-in-up-1,
+  .animate-fade-in-up-2,
+  .animate-fade-in-up-3,
+  .animate-fade-in-up-4,
+  .animate-shimmer-gradient,
+  .animate-gentle-float,
+  .animate-float-orb-1,
+  .animate-float-orb-2,
+  .animate-float-orb-3,
+  .animate-pulse-ring,
+  .animate-pulse-subtle {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
